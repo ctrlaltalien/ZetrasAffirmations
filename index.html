@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zetra: Cosmic Affirmations</title>
+    
+    <!-- 1. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- 3. Babel to translate JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        /* Using a Google Font for a better look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- This is where our React app will be displayed -->
+    <div id="root"></div>
+
+    <!-- 4. Your React App Code -->
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Helper to pick a random item from an array
+        const sample = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+        // Zetra's affirmations
+        const affirmations = [
+          "I am doing my best — even if my best is horizontal.",
+          "I release what no longer aligns… like meetings before 10am.",
+          "I am not lazy. I’m just conserving cosmic energy.",
+          "My worth isn’t tied to my to-do list or inbox.",
+          "Rest is revolutionary. Naps are non-negotiable.",
+          "If the universe needed me to hustle, it would’ve given me more caffeine.",
+          "I radiate peace… and mild contempt for nonsense.",
+          "I am a cosmic masterpiece — with poor Wi-Fi and great intuition.",
+          "Alignment over achievement. Every damn time.",
+          "I float above chaos like a smug little meteor.",
+          "My spirit animal is a dial-up modem: I get there eventually, and I make a lot of noise about it.",
+          "I will not stress about things I can't control, like the laws of thermodynamics or group projects.",
+          "My aura is currently set to 'do not disturb'.",
+          "I am a vessel of cosmic light, currently powered down to save energy.",
+          "I honor my need for rest. My ancestors didn't fight off space bears for me to answer emails after 6 PM.",
+          "Letting go of what weighs me down. Starting with my 37 open browser tabs.",
+          "I am not 'behind'. The universe doesn't have a project manager.",
+          "My boundaries are as sacred as a black hole's event horizon. Do not cross.",
+          "I embrace the glorious mess that I am. It's a nebula of potential... and snacks.",
+          "Today's goal: exist with the quiet confidence of a cat who just pushed a glass off a table.",
+          "I am not procrastinating. I am marinating in the cosmic juices of inspiration.",
+          "My intuition is my primary notification system. All other alerts are on silent.",
+          "I am not 'too much'. You are just not in the correct dimension to perceive my magnificence.",
+          "I will not compare myself to others. Their solar system is not my solar system.",
+          "My energy is a finite resource, not a renewable power plant for your drama.",
+          "I'm not avoiding my responsibilities. I'm observing them from a safe, astral distance.",
+          "I am allowed to change my mind. It's called stellar evolution.",
+          "I am a beacon of tranquility in a sea of 'per my last email'.",
+          "I'm not weird. I'm a limited edition, collector's item from a distant galaxy.",
+          "I will not 'should' on myself today.",
+          "My inner child needs a nap and a juice box, not another deadline.",
+          "I am as resilient as a tardigrade in the vacuum of space. And just as cute.",
+          "I trust the timing of the universe, even when it runs on intergalactic standard time.",
+          "I am not 'lost'. I am on the scenic route to my own destiny.",
+          "My patience is not a subscription service you can renew.",
+          "I am a star. I am meant to collapse dramatically from time to time.",
+          "I release the need for external validation. My own cosmic approval is sufficient.",
+          "I am not 'unproductive'. I am in my 'cosmic contemplation' era.",
+          "I will not be rushed. I am on nebula time.",
+          "My vibe is 'unbothered planet spinning in its own orbit'.",
+          "I am a complex being of stardust and sarcasm.",
+          "I attract abundance, like my couch attracts crumbs.",
+          "I am not ignoring you, I am processing your data packet.",
+          "I am at peace with the fact that my journey is weird and wonderful.",
+          "I have the emotional availability of a planet that's mostly gas.",
+          "I'm not being difficult. I'm just in a different gravitational pull.",
+          "My worth isn't determined by my productivity. It's determined by the sheer improbability of my existence."
+        ];
+
+        // Main App Component
+        function App() {
+          const [affirmation, setAffirmation] = useState('');
+          const [isGenerating, setIsGenerating] = useState(false);
+
+          const generateAffirmation = () => {
+            if (isGenerating) return;
+            setIsGenerating(true);
+            
+            setTimeout(() => {
+              let newAffirmation;
+              do {
+                newAffirmation = sample(affirmations);
+              } while (newAffirmation === affirmation);
+              
+              setAffirmation(newAffirmation);
+              setIsGenerating(false);
+            }, 500);
+          };
+
+          useEffect(() => {
+            setAffirmation(sample(affirmations));
+          }, []);
+
+          return (
+            <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-4 font-sans relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-full bg-black">
+                <div className="absolute w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+              </div>
+              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+
+              <div className="z-10 flex flex-col items-center text-center max-w-2xl w-full">
+                <div className="mb-6 w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-purple-400/50 shadow-2xl shadow-purple-500/20 bg-gray-800">
+                  <img 
+                    src="https://p16-pu-sign-useast8.tiktokcdn-us.com/tos-useast8-avt-0068-tx2/8870fb855fa4e8b2e1c68943980c6972~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=9640&refresh_token=74cd8ea4&x-expires=1753153200&x-signature=s9cyuyb7%2BnV3WAac3HaNULwZu6Q%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=useast8" 
+                    alt="Zetra's logo: a stylized, cosmic character." 
+                    className="w-full h-full object-cover"
+                    onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/224x224/1F2937/A78BFA?text=Zetra'; }}
+                  />
+                </div>
+
+                <h1 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Zetra</h1>
+                <p className="text-purple-300/80 mb-8">Your Jaded Space Oracle</p>
+
+                <div className="bg-black/30 backdrop-blur-sm p-6 rounded-lg shadow-lg min-h-[150px] w-full flex items-center justify-center border border-white/10">
+                  <p className={`text-lg md:text-xl transition-opacity duration-500 ${isGenerating ? 'opacity-0' : 'opacity-100'}`}>
+                    "{affirmation}"
+                  </p>
+                </div>
+
+                <button 
+                  onClick={generateAffirmation}
+                  className="mt-8 px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-purple-500/50 disabled:opacity-50"
+                  disabled={isGenerating}
+                >
+                  Consult the Cosmos
+                </button>
+              </div>
+
+              <footer className="absolute bottom-4 text-xs text-white/30 z-10">
+                A cosmic transmission for humanity.
+              </footer>
+            </div>
+          );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+    </script>
+</body>
+</html>
